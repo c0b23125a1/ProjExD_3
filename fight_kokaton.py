@@ -142,7 +142,13 @@ class Bomb:
 
 
 class Score:
+    """
+    画面の左下にスコアを表示する。
+    """
     def __init__(self, height) -> None:
+        """
+        引数 height:スクリーンの高さ
+        """
         self.fonto = pg.font.SysFont("hgp創英角ﾎﾟｯﾌﾟ体", 30)
         # self.fonto.set_colorkey((0, 0, 255))
         self.score = 0
@@ -152,6 +158,9 @@ class Score:
     
 
     def update(self, screen: pg.Surface, new_score: int):
+        """
+        引数 screen:画面Surface、 スコアを数えるためint型の変数
+        """
         self.score = new_score
         self.img = self.fonto.render("スコア：" + str(self.score), 0, (0, 0, 255))
         screen.blit(self.img, self.rct)
@@ -198,7 +207,7 @@ def main():
                     scores += 1
                     bird.change_img(6, screen)
                     pg.display.update()
-                    time.sleep(1)
+                    # time.sleep(1)
         bombs = [bomb for bomb in bombs if bomb is not None]
 
         key_lst = pg.key.get_pressed()
